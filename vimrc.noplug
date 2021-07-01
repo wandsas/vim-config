@@ -1,0 +1,285 @@
+scriptencoding utf-8
+filetype off
+set nocompatible
+
+" {{{ plug.vim
+
+" Install vim-plug if not found
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"endif
+
+" Run PlugInstall if there are missing plugins
+"autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+"  \| PlugInstall --sync | source $MYVIMRC
+"  \| endif
+
+" }}}
+" {{{ Directories
+
+if empty($XDG_CACHE_HOME)
+	let $XDG_CACHE_HOME = fnamemodify("~/.cache", ":p:h")
+endif
+"if empty($XDG_CONFIG_HOME)
+"	let $XDG_CONFIG_HOME = fnamemodify("~/.config", ":p:h")
+"endif
+
+
+if !isdirectory($XDG_CACHE_HOME . "/vim/undo")
+	call mkdir($XDG_CACHE_HOME . "/vim/undo", "p")
+endif
+set undodir=$XDG_CACHE_HOME/vim/undo//
+
+if !isdirectory($XDG_CACHE_HOME . "/vim/backup")
+	call mkdir($XDG_CACHE_HOME . "/vim/backup", "p")
+endif
+set backupdir=$XDG_CACHE_HOME/vim/backup//
+
+"if !isdirectory($XDG_CACHE_HOME . "/vim/swp")
+"	call mkdir($XDG_CACHE_HOME . "/vim/swp", "p")
+"endif
+"set directory=$XDG_CACHE_HOME/vim/swp//
+
+"let g:netrw_home=expand("$XDG_DATA_HOME/vim")
+
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+
+" }}}
+" {{{ Basic configuration
+
+set noswapfile
+set history=1000          " Huge history and undofile
+"set undofile
+set undolevels=1000
+
+" File handling
+set autoread
+set autowrite
+
+" No bells
+set novisualbell
+set noerrorbells
+
+" Search
+set hlsearch        " highlight search pattern matches
+set incsearch       " incrementally search
+set ignorecase      " search lower/upper case letters ignoring case sensitive, consider only letters
+set smartcase       " case sensitive search for lower-case string
+
+" Ignore files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.db,*.o,*.a
+set tags=./.tags:/
+
+" Cursor
+set backspace=indent,eol,start
+set matchpairs+=<:>
+
+" Line numbers
+set number
+set numberwidth=4
+set relativenumber
+set scrolloff=5
+
+" Window splits
+set splitbelow
+set splitright
+
+" Status bar
+set laststatus=2
+set noshowmode
+set lazyredraw
+
+" Last line
+set listchars=tab:.\ ,eol:¬,extends:❯,precedes:❮
+set showcmd         " command history
+set showmatch       " matching braces
+set linebreak       " line wrapping
+set modeline        " modeline set number of lines (beginning and end of file)
+                    " vim checks for initializations
+
+set path+=**        " set path to $PWD
+set sessionoptions+=tabpages,globals,winpos,winsize,blank,resize " remember tab names in sessions
+
+
+syntax on             " Enable Syntax Highlighting
+filetype plugin indent on
+
+set tabstop=4         " Indendation rules
+set softtabstop=4     " default ts=4 sts=4 sw=4
+set shiftwidth=4      " toggle ts=2 sts=2 sw=2 with <leader>t/T
+set expandtab
+
+set colorcolumn=80
+set textwidth=100
+
+set autoindent
+set smartindent
+set copyindent
+
+set smarttab
+set breakindent
+set magic
+
+" }}}
+" {{{ Keybindings
+" put leader to space
+map <space> <leader>
+map <space><space> <leader><leader>
+
+" Navigate buffer next/prev: leader+./leader+,
+noremap <leader>. :bn<CR>
+noremap <leader>, :bp<CR>
+
+" Navigate tab next/prev: tab/shift+tab
+nnoremap <tab> <esc>:tabnext<cr>
+nnoremap <s-tab> <esc>:tabprev<cr>
+
+" Navigate tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<cr>
+
+" Window splits
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+set pastetoggle=<F2>
+
+" Redraw screen
+nnoremap <leader>r <ESC>:redraw!<CR>
+
+" Toggle paste mode
+nnoremap <leader>n :setlocal nonumber norelativenumber<CR>
+nnoremap <leader>N :setlocal number relativenumber<CR>
+
+" Trim trailing whitespace
+nnoremap <ESC>t :%s/\s\+$//<CR>
+
+" Remove search highlight
+nnoremap <ESC><ESC> :noh<CR>
+
+" Think "little tabs" and "big tabs"
+map <leader>t :set tabstop=2 softtabstop=2 shiftwidth=2 expandtab<CR>
+map <leader>T :set tabstop=4 softtabstop=4 shiftwidth=4 expandtab<CR>
+
+" w!! to write with sudo
+cmap w!! w !sudo tee % >/dev/null
+
+" reload vimrc
+nmap <leader>s :source $MYVIMRC<cr>
+
+" }}}
+" {{{ Jump last known cursor position
+
+" When editing a file, always jump to the last known  relativenumber!cursor position
+" Don't do that when position is invalid, or when inside an event handler
+" (e.g. when dropping a file on gvim), or for a commit message.
+
+
+" ":augroup vimStartup | au! | augroup END"
+augroup vimStartup
+  au!
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+augroup END
+
+"- }}}
+" {{{ Omnicompletion
+
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"set completeopt=menu
+set completeopt=menuone,longest
+set complete-=i
+
+if exists("+omnifunc")
+    autocmd Filetype *
+           \ if &omnifunc == "" |
+           \     setlocal omnifunc=syntaxcomplete#Complete |
+           \ endif
+endif
+
+" }}}
+" {{{ Plugins
+
+"call plug#begin('~/.vim/plugins')
+"Plug 'itchyny/lightline.vim'
+"Plug 'junegunn/vim-easy-align'
+"Plug 'junegunn/fzf.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-commentary'
+"Plug 'tpope/vim-repeat'
+"Plug 'majutsushi/tagbar'
+"Plug 'christoomey/vim-tmux-navigator'
+"Plug 'scrooloose/nerdtree'
+"Plug 'kien/ctrlp.vim'
+"Plug 'fatih/vim-go'
+"Plug 'rust-lang/rust.vim'
+"Plug 'vimwiki/vimwiki'
+"call plug#end()
+
+" }}}
+" {{{ Plugin settings
+
+" lightline.vim
+let g:lightline = {
+  \ 'colorscheme': 'wombat',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ }
+
+" fzf
+let $FZF_DEFAULT_COMMAND= 'rg --files --hidden --follow --glob "!.git/*"'
+let g:fzf_layout = { 'down': '~40%' }
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :Files<CR>
+
+" vim-surround
+xmap ' S'
+xmap " S"
+xmap [ S[
+xmap { S{
+xmap ( S(
+
+" EasyAlign
+xnoremap ga <Plug>(EasyAlign) " Start interactive EasyAlign in visual mode (e.g. vipga)
+nnoremap ga <Plug>(EasyAlign) " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+
+" vim-fugitive
+nnoremap <leader>gb :GBrowse<CR>
+nnoremap <leader>ga :Git add %:p<CR>
+nnoremap <leader>gc :Git commit %<CR>
+nnoremap <leader>gst :Git status<CR>
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gpl :Git pull<CR>
+vnoremap <leader>gb :Gblame<CR>
+
+" vim-tmux-navigator
+let g:tmux_navigator_save_on_switch = 2       " write buffers before navigating from vim to Tmux
+let g:tmux_navigator_disable_when_zoomed = 1  " disable tmux navigator when zooming vim panes
+
+nnoremap <silent> <ctrl-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <ctrl-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <ctrl-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <ctrl-l> :TmuxNavigateRight<cr>
+
+" }}}
+" {{{ footer
+" vim:fenc=utf-8:ft=vim:ts=2:sts=0:sw=2:et:foldmethod=marker:foldlevel=0:
+" }}}

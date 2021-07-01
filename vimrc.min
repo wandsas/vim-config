@@ -1,0 +1,32 @@
+" Minimal vimrc
+
+set nocompatible
+filetype plugin indent on
+syntax on
+
+set ts=4 sts=4 sw=4 et
+set autoindent smartindent smarttab
+
+set backspace=2
+set hidden
+set wim=longest,list
+
+set hlsearch incsearch ignorecase
+
+set completeopt=menuone,longest
+set complete-=i
+
+" Status bar
+set laststatus=2
+
+" Lastline
+set showcmd showbreak=↪ showmatch lazyredraw
+
+set listchars=tab:.\ ,extends:❯,precedes:❮
+set modelines=1
+
+set novisualbell
+set noerrorbells
+
+colorscheme default
+
