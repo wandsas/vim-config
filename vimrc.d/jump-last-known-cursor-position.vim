@@ -1,4 +1,3 @@
-
 " Jump last known cursor position
 
 " When editing a file, always jump to the last known  relativenumber!cursor position
@@ -13,3 +12,7 @@ autocmd BufReadPost *
     \ |   exe "normal! g`\""
     \ | endif
 augroup END
+
+" {{{ footer
+" vim:fenc=utf-8:ft=vim:ts=2:sts=0:sw=2:et:foldmethod=marker:foldlevel=0:
+" }}}

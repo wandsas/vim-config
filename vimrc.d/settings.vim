@@ -1,4 +1,4 @@
-" Basic settings
+" settings.vim
 
 set noswapfile
 set backup
@@ -52,6 +52,9 @@ set path+=**        " set path to $PWD
 set sessionoptions+=tabpages,globals,winpos,winsize,blank,resize " remember tab names in sessions
 
 " Window splits
+" ctrl+w v vertical
+" ctrl+w s horizontal
+" ctrl+w hjkl to switch between panes
 set splitbelow
 set splitright
 
@@ -96,3 +99,7 @@ set copyindent
 set smarttab
 set breakindent
 set magic
+
+" {{{ footer
+" vim:fenc=utf-8:ft=vim:ts=2:sts=0:sw=2:et:foldmethod=marker:foldlevel=0:
+" }}}

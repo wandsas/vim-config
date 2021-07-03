@@ -16,7 +16,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| endif
 
 " }}}
-" {{{ Plugins
+" { Plugins
 
 call plug#begin('~/.vim/plugins')
 Plug 'itchyny/lightline.vim'
@@ -35,15 +35,15 @@ Plug 'rust-lang/rust.vim'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
-" }}}
-" {{{ Vim Configurations
+" }
+" {{{ vimrc.d
 
 for g:rc in split(glob('~/.vim/vimrc.d/*.vim'), '\n')
     exe 'source' rc
 endfor
 
 " }}}
-" {{{  Plugin Settings
+" {{{  pluginrc.d
 
 for g:rc in split(glob('~/.vim/pluginrc.d/*.vim'), '\n')
    exe 'source' rc

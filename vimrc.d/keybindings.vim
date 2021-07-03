@@ -1,4 +1,4 @@
-" Keybindings
+" keybindings.vim
 
 " put leader to space
 map <space> <leader>
@@ -50,3 +50,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 " reload vimrc
 nmap <leader>s :source $MYVIMRC<cr>
+
+" {{{ footer
+" vim:fenc=utf-8:ft=vim:ts=2:sts=0:sw=2:et:foldmethod=marker:foldlevel=0:
+" }}}
