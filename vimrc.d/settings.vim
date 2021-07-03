@@ -67,10 +67,12 @@ if has("gui_running")
   set guifont=Fixed\ Medium\ Semi-Condensed\ 10
 
   " Lightweight interface
-  set guioptions=aegitl
+  "set guioptions=aegitl
 
   " Nonblinking cursor
   set gcr=a:blinkon0
+else
+    set t_Co=256
 endif
 
 if &diff
