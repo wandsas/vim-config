@@ -99,7 +99,3 @@ set copyindent
 set smarttab
 set breakindent
 set magic
-
-" {{{ footer
-" vim:fenc=utf-8:ft=vim:ts=2:sts=0:sw=2:et:foldmethod=marker:foldlevel=0:
-" }}}
