@@ -22,8 +22,8 @@ set smartcase       " case sensitive search for lower-case string
 
 " Ignore files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.db,*.o,*.a
-set tags=./.tags:/
-set tags+=.git/tags
+"set tags=./.tags:/
+"set tags+=.git/tags
 
 " Cursor
 set backspace=indent,eol,start
