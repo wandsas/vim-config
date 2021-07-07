@@ -42,12 +42,22 @@ Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
+Plug 'w0rp/ale'
 
 " Syntax plugins
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 
-" Vimwiki
+" OmniCppComplete
+Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
+Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
+" CMake
+Plug 'vhdirk/vim-cmake'
+" clang-format
+Plug 'rhysd/vim-clang-format'
+" Clang complete
+Plug 'Rip-Rip/clang_complete'
+
 Plug 'vimwiki/vimwiki'
 Plug 'teranex/vimwiki-tasks'
 
