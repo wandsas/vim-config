@@ -86,9 +86,9 @@ end
 syntax on
 filetype plugin indent on
 
-set tabstop=4         " Indendation rules
-set softtabstop=4     " default ts=4 sts=4 sw=4
-set shiftwidth=4      " toggle ts=2 sts=2 sw=2 with <leader>t/T
+set tabstop=2         " Indendation rules
+set softtabstop=2     " default ts=4 sts=4 sw=4
+set shiftwidth=2      " toggle ts=2 sts=2 sw=2 with <leader>t/T
 set expandtab
 
 set colorcolumn=80

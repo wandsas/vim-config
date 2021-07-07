@@ -7,7 +7,7 @@
 " Vimwiki setup
 " https://opensource.com/article/18/6/vimwiki-gitlab-notes
 
-" Vim help: Vimwiki mappings
+" Vimwiki keybindings
 " :h vimwiki-mappings
 
 " wiki_1

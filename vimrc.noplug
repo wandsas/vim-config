@@ -1,4 +1,8 @@
-scriptencoding utf-8
+# ~/.vimrc.noplug
+
+set laststatus=2
+set lazyredraw
+set guifont=Terminus\ 8
 filetype off
 set nocompatible
 

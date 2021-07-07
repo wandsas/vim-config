@@ -47,9 +47,6 @@ Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 
-Plug 'direnv/direnv.vim'
-Plug 'christoomey/vim-tmux-navigator'
-
 " Vimwiki
 Plug 'vimwiki/vimwiki'
 Plug 'teranex/vimwiki-tasks'
