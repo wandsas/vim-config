@@ -1,5 +1,5 @@
 scriptencoding utf-8
-filetype off
+
 set nocompatible
 
 filetype plugin indent on
@@ -26,9 +26,7 @@ for g:rc in split(glob('~/.vim/vimrc.d/*.vim'), '\n')
 endfor
 
 " }}}
-
 " { Plugins
-
 call plug#begin('~/.vim/plugins')
 
 Plug 'itchyny/lightline.vim'
@@ -48,23 +46,17 @@ Plug 'w0rp/ale'
 Plug 'fatih/vim-go'
 Plug 'rust-lang/rust.vim'
 
-" OmniCppComplete
 Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
-" CMake
-Plug 'vhdirk/vim-cmake'
-" clang-format
 Plug 'rhysd/vim-clang-format'
-" Clang complete
 Plug 'Rip-Rip/clang_complete'
+Plug 'vhdirk/vim-cmake'
 
 Plug 'vimwiki/vimwiki'
 Plug 'teranex/vimwiki-tasks'
 
 call plug#end()
-
 " }
-
 " {{{  pluginrc.d
 
 for g:rc in split(glob('~/.vim/pluginrc.d/*.vim'), '\n')
