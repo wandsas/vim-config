@@ -2,6 +2,7 @@
 
 " :help complete
 " :help complete-functions
+" :help completeopt
 
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
