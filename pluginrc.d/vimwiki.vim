@@ -14,7 +14,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
           \   'ext': '.md',
           \   'syntax': 'markdown',
           \   'path_html': '~/vimiki/html',
-          \   'index': 'Home',
+          \   'index': 'index',
           \   'diary_rel_path': strftime('diary/%Y')}]
 
 let g:vimwiki_auto_chdir = 1
