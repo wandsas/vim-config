@@ -35,6 +35,10 @@ set numberwidth=4
 set relativenumber
 set scrolloff=5
 
+" cscope
+set timeoutlen=4000
+set ttimeout
+
 " Status bar
 set laststatus=2
 set noshowmode
