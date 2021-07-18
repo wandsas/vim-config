@@ -66,7 +66,7 @@ let g:GPGExecutable="gpg2"
 set dictionary=/usr/share/dict/words
 
 if has("gui_running")
-  set columns=80
+  set columns=90                                                               
   set lines=50
   set guifont=Fixed\ Medium\ Semi-Condensed\ 10
 
