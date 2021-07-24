@@ -10,16 +10,16 @@
 " Vimwiki keybindings
 " :h vimwiki-mappings
 
-let g:vimwiki_list = [{'path': '~/vimwiki/',
+let g:vimwiki_list = [{'path': '~/.vimwiki/',
           \   'ext': '.md',
           \   'syntax': 'markdown',
-          \   'path_html': '~/vimiki/html',
+          \   'path_html': '~/.vimiki/html',
           \   'index': 'index',
           \   'diary_rel_path': strftime('diary/%Y')}]
 
 let g:vimwiki_auto_chdir = 1
 
-autocmd BufWritePost ~/vimwiki/* execute '! git add ~/vimwiki/ && git commit -m "$(date)"'
+autocmd BufWritePost ~/vimwiki/* execute '! git add ~/.vimwiki/ && git commit -m "$(date)"'
 
 " Temporary Wikis
 " treat every file with configured file-extension as a wiki
