@@ -52,4 +52,14 @@ endfunction
 nmap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
 nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
 
+" Custom markdown to html converter
+autocmd FileType vimwiki call SetMarkdownOptions()
+
+function! SetMarkdownOptions()
+	call VimwikiSet('syntax', 'markdown')
+	call VimwikiSet('custom_wiki2html', 'wiki2html.sh')
+endfunction
+
+nmap <Leader>wh :call VimwikiAll2HTML()<CR>
+
 " vim:fenc=utf-8:ft=vim:ts=2:sts=2:sw=2:et:
