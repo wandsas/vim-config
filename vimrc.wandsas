@@ -54,7 +54,7 @@ Plug 'vhdirk/vim-cmake'
 
 Plug 'vimwiki/vimwiki'
 Plug 'teranex/vimwiki-tasks'
-
+Plug 'mattn/calendar-vim'
 call plug#end()
 " }
 " {{{  pluginrc.d
