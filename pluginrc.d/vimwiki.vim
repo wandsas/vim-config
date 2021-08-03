@@ -12,10 +12,11 @@
 
 " Main configuration
 let g:vimwiki_list = [{'path': '~/.vimwiki/',
-                    \   'ext': '.md',
-                 \   'syntax': 'markdown',
-              \   'path_html': '~/.vimiki/html',
-                  \   'index': 'index',
+         \        'path_html': '~/.vimiki/html',
+         \           'syntax': 'markdown',
+         \              'ext': '.md',
+         \            'index': 'index',
+         \ 'custom_wiki2html': '~/.vimwiki/scripts/wiki2html.sh',
          \   'diary_rel_path': strftime('diary/%Y')}]
 
 " Whenever vimwiki is openend, it autochanges to the root wiki folder (set in g:vimwiki_list).
