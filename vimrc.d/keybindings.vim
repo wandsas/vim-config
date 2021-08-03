@@ -21,12 +21,16 @@ map <leader>tm :tabmove<cr>
 " Window splits
 " ctrl+w v window next to existing
 " ctrl+w s window botton of current
-"nnoremap <c-h> <c-w>h
-"nnoremap <c-j> <c-w>j
-"nnoremap <c-k> <c-w>k
-"nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
+" toggle paste mode
 set pastetoggle=<F2>
+
+" trim trailing whitespace
+nnoremap <leader>t <ESC>:%s/\s\+$//<CR>
 
 " Redraw screen
 nnoremap <leader>r <ESC>:redraw!<CR>

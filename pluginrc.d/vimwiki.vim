@@ -19,20 +19,33 @@ let g:vimwiki_list = [{'path': '~/.vimwiki',
          \ 'custom_wiki2html': '~/.vimwiki/scripts/wiki2html.sh',
          \   'diary_rel_path': strftime('diary/%Y')}]
 
-" Whenever vimwiki is openend, it autochanges to the root wiki folder (set in g:vimwiki_list).
-let g:vimwiki_auto_chdir = 1
+let g:vimwiki_ext2syntax = {'.md': 'markdown',
+         \ '.wiki': 'media'}
 
 " Commit vimwiki changes to git repo, when BufWritePost autocmd event is executed.
 autocmd BufWritePost ~/vimwiki/* execute '! git add ~/.vimwiki/ && git commit -m "$(date)"'
 " Read about Vim autocmd in general: https://7id.xray.aps.anl.gov/software/vim/usr_40.html#40.3
 " More advanced autocmds: https://7id.xray.aps.anl.gov/software/vim/autocmd.html
 
+" Whenever vimwiki is openend, it autochanges to the root wiki folder (set in g:vimwiki_list).
+let g:vimwiki_auto_chdir = 1
+
 " Temporary Wikis
 " treat every file with configured file-extension as a wiki
 let g:vimwiki_global_ext = 1
 
+" Automatically save a modified wiki buffer when switching wiki pages
+let g:vimwiki_autowriteall = 1
+
 " Treat all files with the extensions asc|gpg|md|pgp as gpg keyrings 
 let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)\(.md\)\='
+
+let g:vimwiki_html_header_numbering = 1
+let g:vimwiki_html_header_numbering_sym = '.'
+
+" html files with no corresponding wiki files and should not be deleted
+" after :VimwikiAll2HTML.
+let g:vimwiki_user_htmls = 'bash.html,glibc.html,musl.html'
 
 " =============================================================================
 " Vimwiki Tasks
