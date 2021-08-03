@@ -11,7 +11,7 @@
 " https://vimwiki.github.io/vimwikiwiki/Tips%20and%20Snips.html
 
 " Main configuration
-let g:vimwiki_list = [{'path': '~/.vimwiki/index.md',
+let g:vimwiki_list = [{'path': '~/.vimwiki',
          \        'path_html': '~/.vimiki/html/index.html',
          \           'syntax': 'markdown',
          \              'ext': '.md',
