@@ -11,8 +11,8 @@
 " https://vimwiki.github.io/vimwikiwiki/Tips%20and%20Snips.html
 
 " Main configuration
-let g:vimwiki_list = [{'path': '~/.vimwiki/',
-         \        'path_html': '~/.vimiki/html',
+let g:vimwiki_list = [{'path': '~/.vimwiki/index.md',
+         \        'path_html': '~/.vimiki/html/index.html',
          \           'syntax': 'markdown',
          \              'ext': '.md',
          \            'index': 'index',
@@ -34,7 +34,9 @@ let g:vimwiki_global_ext = 1
 " Treat all files with the extensions asc|gpg|md|pgp as gpg keyrings 
 let g:GPGFilePattern = '*.\(gpg\|asc\|pgp\)\(.md\)\='
 
+" =============================================================================
 " Vimwiki Tasks
+" =============================================================================
 let g:vimwiki_tasks_annotate_origin = 1
 "let g:vimwiki_tasks_tags_nodue = ''
 "let g:vimwiki_tasks_tags_duetime = ''
@@ -53,6 +55,10 @@ endfunction
 nmap <Leader>wa :call VimwikiFindAllIncompleteTasks()<CR>
 nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
 
+" =============================================================================
+" Vimwiki custom wiki2html converter
+" =============================================================================
+
 " Custom markdown to html converter
 autocmd FileType vimwiki call SetMarkdownOptions()
 
@@ -62,5 +68,29 @@ function! SetMarkdownOptions()
 endfunction
 
 nmap <Leader>wh :call VimwikiAll2HTML()<CR>
+
+
+" =============================================================================
+" Vimwiki calendar
+" =============================================================================
+
+au BufRead,BufNewFile *.md set filetype=markdown
+:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+
+function! ToggleCalendar()
+  execute ":Calendar"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+:autocmd FileType vimwiki map c :call ToggleCalendar()
+
 
 " vim:fenc=utf-8:ft=vim:ts=2:sts=2:sw=2:et:
