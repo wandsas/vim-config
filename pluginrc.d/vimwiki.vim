@@ -73,7 +73,7 @@ nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
 " =============================================================================
 
 " Custom markdown to html converter
-autocmd FileType vimwiki call SetMarkdownOptions()
+"autocmd FileType vimwiki call SetMarkdownOptions()
 
 "function! SetMarkdownOptions()
 "	call Vimwikiset('syntax', 'markdown')
@@ -88,7 +88,7 @@ nmap <Leader>wh :call VimwikiAll2HTML()<CR>
 " =============================================================================
 
 au BufRead,BufNewFile *.md set filetype=markdown
-:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+:autocmd FileType vimwiki map md :VimwikiMakeDiaryNote
 
 function! ToggleCalendar()
   execute ":Calendar"
