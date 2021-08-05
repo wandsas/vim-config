@@ -75,10 +75,10 @@ nmap <Leader>wx :call VimwikiFindIncompleteTasks()<CR>
 " Custom markdown to html converter
 autocmd FileType vimwiki call SetMarkdownOptions()
 
-function! SetMarkdownOptions()
-	call VimwikiSet('syntax', 'markdown')
-	call VimwikiSet('custom_wiki2html', 'wiki2html.sh')
-endfunction
+"function! SetMarkdownOptions()
+"	call Vimwikiset('syntax', 'markdown')
+"	call Vimwikiset('custom_wiki2html', 'wiki2html.sh')
+"endfunction
 
 nmap <Leader>wh :call VimwikiAll2HTML()<CR>
 
