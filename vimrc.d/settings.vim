@@ -44,7 +44,7 @@ set noshowmode
 set lazyredraw
 
 " Last line
-set listchars=tab:.\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set showcmd         " command history
 set showmatch       " matching braces
 set linebreak       " line wrapping
