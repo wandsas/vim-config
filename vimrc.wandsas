@@ -50,11 +50,11 @@ Plug 'vim-scripts/OmniCppComplete', { 'for': 'cpp' }
 Plug 'octol/vim-cpp-enhanced-highlight', { 'for': 'cpp' }
 Plug 'rhysd/vim-clang-format'
 Plug 'Rip-Rip/clang_complete'
-Plug 'vhdirk/vim-cmake'
+"Plug 'vhdirk/vim-cmake'
 
 Plug 'vimwiki/vimwiki'
-Plug 'teranex/vimwiki-tasks'
-Plug 'mattn/calendar-vim'
+"Plug 'teranex/vimwiki-tasks'
+"Plug 'mattn/calendar-vim'
 call plug#end()
 " }
 " {{{  pluginrc.d
