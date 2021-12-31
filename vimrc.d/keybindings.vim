@@ -35,6 +35,9 @@ nnoremap <leader>t <ESC>:%s/\s\+$//<CR>
 " Redraw screen
 nnoremap <leader>r <ESC>:redraw!<CR>
 
+" Remove search highlight
+nnoremap <ESC><ESC> :noh<CR>
+
 " Toggle paste mode
 nnoremap <leader>n :setlocal nonumber norelativenumber<CR>
 nnoremap <leader>N :setlocal number relativenumber<CR>
